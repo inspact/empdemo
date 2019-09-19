@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zby.mapper.EmpMapper">
+<!--因为数据库数据和实体类数据名称不一样，要建立resultmap使其对应，type类型为对应的实体类-->
+    <resultMap id="empMap" type="Emp">
+        <id column="emp_id" property="empId"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="salary" property="salary"/>
+        <result column="dept_id" property="deptId"/>
+    </resultMap>
+<!--查员工和部门的数据，部门名称在部门表，所以要关联，多对一可以看成一对一-->
+    <resultMap id="empDeptMap" type="Emp">
+        <id column="emp_id" property="empId"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="salary" property="salary"/>
+        <result column="dept_id" property="deptId"/>
+        <!--关联部门表，注意部门ID是select语句中起的别名-->
+        <association property="dept" javaType="Dept">
+            <id column="did" property="deptId"/>
+            <result column="dname" property="dname"/>
+            <result column="location" property="location"/>
+        </association>
+    </resultMap>
+
+
+    <select id="listEmp" resultMap="empMap">
+        select <include refid="allColumn"/> from t_emp
+    </select>
+<!--查询带有部门名称的员工表-->
+    <select id="listEmpDept" resultMap="empDeptMap">
+        select emp_id , name, age, sex, salary ,d.dept_id did ,dname from t_emp e left join t_dept d on e.dept_id = d.dept_id
+    </select>
+
+    <sql id="allColumn">
+        emp_id ,name, age, sex, salary ,dept_id
+    </sql>
+
+    <insert id="addEmp">
+        insert into t_emp (name, age, sex, salary,dept_id) values (#{name},#{age},#{sex},#{salary},#{deptId})
+    </insert>
+
+
+</mapper>
