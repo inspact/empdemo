@@ -18,6 +18,7 @@ public class EmpListServlet extends HttpServlet {
 
 
     @Override
+
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //1.查询数据库

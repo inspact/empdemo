@@ -22,6 +22,7 @@ public class AddEmpServlet extends HttpServlet {
 
         //1.获得表单数据
         Emp emp = new Emp();
+//        getAttribute获得的参数值是表单中name的值,name的值也要和数据库sql语句中相对应
         emp.setName(req.getParameter("name"));
         emp.setAge(Integer.parseInt(req.getParameter("age")));
         emp.setSex(req.getParameter("sex"));
@@ -29,10 +30,10 @@ public class AddEmpServlet extends HttpServlet {
         emp.setDeptId(Integer.parseInt(req.getParameter("deptId")));
 
 
-
         //2.传到数据库
         empService.addEmp(emp);
-        //3.转发到jsp上
+        //3.重定向到jsp上
+        //不能用
 //        req.getRequestDispatcher("empList").forward(req,resp);
         resp.sendRedirect("empList");
 

@@ -42,6 +42,34 @@ public class EmpServiceImpl implements EmpService {
 
         return row;
     }
+
+    @Override
+    public int deleteEmpById(Integer id) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
+        int row =  empMapper.deleteEmpById(id);
+        sqlSession.close();
+        return row;
+    }
+
+    @Override
+    public Emp getEmpById(Integer id) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
+        Emp emp =  empMapper.getEmpById(id);
+        sqlSession.close();
+        return emp;
+    }
+
+    @Override
+    public int updateEmpById(Emp emp) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
+        int row = empMapper.updateEmpById(emp);
+        sqlSession.close();
+
+        return row;
+    }
 }
 
 

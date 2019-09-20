@@ -23,9 +23,9 @@ public class AddEmpViewServlet extends HttpServlet {
         List<Dept> deptList = deptService.listDept();
 
         //req得到部门信息,数据绑定到req上
-        req.setAttribute("deptList",deptList);
+        req.setAttribute("deptList", deptList);
 
 
-        req.getRequestDispatcher("\\WEB-INF\\pages\\addemp.jsp").forward(req,resp);
+        req.getRequestDispatcher("\\WEB-INF\\pages\\addemp.jsp").forward(req, resp);
     }
 }
