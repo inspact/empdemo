@@ -20,7 +20,7 @@ public class UpdateEmpServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.获取表单根据id获取的数据
-        req.setCharacterEncoding("utf-8");
+//        req.setCharacterEncoding("utf-8");
         Integer empId = Integer.parseInt(req.getParameter("empId"));
         String name = req.getParameter("name");
         Integer age = Integer.parseInt(req.getParameter("age"));

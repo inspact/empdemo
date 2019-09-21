@@ -12,7 +12,7 @@
             <form action="addemp" method="post">
                 <div class="form-group">
                     <label for="name">姓名</label>
-                    <input type="text" class="form-control" id="name" placeholder="姓名" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="姓名" name="name" >
                 </div>
 
                 <div class="form-check">

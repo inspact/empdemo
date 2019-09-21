@@ -18,7 +18,7 @@ public class AddEmpServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
+//        req.setCharacterEncoding("utf-8");
 
         //1.获得表单数据
         Emp emp = new Emp();
