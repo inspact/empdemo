@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
 
+
                 Cookie cookie = new Cookie("username", user.getUsername());
                 cookie.setMaxAge(60 * 60 * 24);
                 //cookie存入浏览器
